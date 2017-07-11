@@ -1,6 +1,7 @@
 <template>
   <div class="article_action clear_fix">
-    <mu-raised-button :label="favorite_label" labelPosition="after" :icon="icon_val" :color="favorite_color" @click="favorite"/>
+    <mu-raised-button :label="favorite_label" labelPosition="after" :icon="icon_val" :color="favorite_color"
+                      @click="favorite"/>
   </div>
 </template>
 
@@ -24,6 +25,11 @@
       favorite(){
         const self = this,
           ACCESSTOKEN = self.$store.state.token;
+        if (!ACCESSTOKEN) {
+          const REDIRECT = 'article?topic_id=' + self.topic_id;
+          self.$router.push('/login?redirect=' + REDIRECT);
+          return;
+        }
         if (self.favorite_flag === false) {
           self.axios({
             method: 'post',
@@ -64,16 +70,22 @@
           });
         }
       },
+      init_collect(){
+        if (this.is_collect === true) {
+          const self_ = this;
+          self_.favorite_flag = true;
+          self_.icon_val = 'favorite';
+          self_.favorite_label = '已收藏';
+          self_.favorite_color = 'red';
+        }
+      },
     },
-    mounted(){},
-    watch:{
-      //    加载判断是否为已收藏
+    mounted(){
+    },
+    watch: {
+//    加载判断是否为已收藏
       is_collect(val){
-        const self_ = this;
-        self_.favorite_flag = true;
-        self_.icon_val = 'favorite';
-        self_.favorite_label = '已收藏';
-        self_.favorite_color = 'red';
+        return this.init_collect();
       }
     }
   }

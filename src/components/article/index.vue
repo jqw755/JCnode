@@ -18,7 +18,7 @@
     <!--话题内容-->
     <Context :content="data.content"></Context>
     <!--评论-->
-    <section></section>
+    <comment :replies_="data.replies"></comment>
     <!--快速回复-->
     <section></section>
   </div>
@@ -27,14 +27,14 @@
 <script>
   import loading_v from '../loading/loading'
   import {loading} from '../../utils/loading'
-  //  import utils from '../../utils/utils'
   import Context from './context'
+  import comment from './comment'
   import action from './action'
   export default {
     data() {
       return {
         data: {},
-        author: {}
+        author: {},
       }
     },
     methods: {
@@ -45,8 +45,8 @@
         if (ARTICLE_ID) {
           if (this.$store.state.token !== null) {
             url = 'api/topic/' + ARTICLE_ID + '?accesstoken=' + this.$store.state.token;
-          }else{
-              url = 'api/topic/' + ARTICLE_ID;
+          } else {
+            url = 'api/topic/' + ARTICLE_ID;
           }
           self.axios.get(url).then((response) => {
             loading.hide();
@@ -70,6 +70,7 @@
     components: {
       loading_v,
       Context,
+      comment,
       action
     }
   }
