@@ -6,13 +6,13 @@
           <!--is top-->
           <mu-icon value="vertical_align_top" slot="right" v-if="item.top"/>
           <mu-avatar :src="item.author.avatar_url" slot="leftAvatar"/>
-          <span slot="describe">
+          <span slot="describe" v-if="item.tab">
             <span>{{item.author.loginname}}</span>
             <span>#{{item.tab}}#</span>
             --<span>{{item.create_at}}</span>
           </span>
         </mu-list-item>
-        <div class="item_action">
+        <div class="item_action" v-if="item.visit_count">
           <mu-flat-button :label="String(item.visit_count) " class="demo-flat-button" icon="visibility" iconClass="iactioin_con" labelClass="action_label" />
           <mu-flat-button :label="String(item.reply_count)" class="demo-flat-button" icon="comment" iconClass="iactioin_con" labelClass="action_label" />
           <mu-flat-button label="最后回复" class="demo-flat-button" icon="fiber_new" iconClass="iactioin_con" labelClass="action_label" />
@@ -98,8 +98,6 @@
 
   .content_item{
     background: #fff;
-    /*margin-bottom:15px;*/
-    /*box-shadow: 0 0 5px #ccc;*/
   }
 
   .item_action{

@@ -20,7 +20,7 @@
     <!--评论-->
     <comment :replies_="data.replies"></comment>
     <!--快速回复-->
-    <section></section>
+    <reply></reply>
   </div>
 </template>
 
@@ -29,6 +29,7 @@
   import {loading} from '../../utils/loading'
   import Context from './context'
   import comment from './comment'
+  import reply from './reply'
   import action from './action'
   export default {
     data() {
@@ -71,6 +72,7 @@
       loading_v,
       Context,
       comment,
+      reply,
       action
     }
   }

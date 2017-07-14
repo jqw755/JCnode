@@ -14,10 +14,10 @@ export default new Vuex.Store({
     title: ''
   },
   mutations: {
-    [types.USER]: (state, data) => {
-      localStorage.user = JSON.stringify(data);
-      state.user = data;
-    },
+    // [types.USER]: (state, data) => {
+    //   localStorage.user = JSON.stringify(data);
+    //   state.user = data;
+    // },
     [types.LOGIN]: (state, data) => {
       localStorage.token = data;
       state.token = data;

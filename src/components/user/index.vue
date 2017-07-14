@@ -20,10 +20,13 @@
 
     <section class="my_content">
       <mu-list>
-        <mu-list-item title="话题" to="/topicCollect">  <!-- 这里用to跳转，跳过去会报错，后面解决 07/08-->
+        <mu-list-item title="话题" to="/myTopic">  <!-- 这里用to跳转，跳过去会报错，后面解决 07/08-->
           <mu-icon slot="right" value="keyboard_arrow_right" color="#aaa"/>
         </mu-list-item>
-        <mu-list-item title="评论">
+        <mu-list-item title="收藏" to="/topicCollect">  <!-- 这里用to跳转，跳过去会报错，后面解决 07/08-->
+          <mu-icon slot="right" value="keyboard_arrow_right" color="#aaa"/>
+        </mu-list-item>
+        <mu-list-item title="评论" to="/myReply">
           <mu-icon slot="right" value="keyboard_arrow_right" color="#aaa"/>
         </mu-list-item>
         <mu-list-item title="github">
@@ -66,10 +69,10 @@
     methods: {
       getUser(){
         const USERINFO = JSON.parse(localStorage.getItem('user'));
-        if (USERINFO) {
-          this.userinfo = USERINFO;
-        } else {
+        if (!USERINFO) {
           this.$router.push('/login');
+        }else{
+         this.userinfo = USERINFO;
         }
       },
       getUserData(){

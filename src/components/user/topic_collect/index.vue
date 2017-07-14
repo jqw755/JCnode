@@ -3,42 +3,23 @@
     <loading_v></loading_v>
 
     <section class="breadcrumb">
-      <router-link to="/">
-        <span>主页</span>
-      </router-link>
-      <span>/</span>
-      <router-link to="/my">
-        <span>我的</span>
-      </router-link>
-      <span>/</span>
-      <router-link to="/topicCollect">
-        <span style="color: #ff4081;">收藏</span>
-      </router-link>
+      <mu-sub-header>
+        <router-link to="/">
+          <span>主页</span>
+        </router-link>
+        <span>/</span>
+        <router-link to="/my">
+          <span>我的</span>
+        </router-link>
+        <span>/</span>
+        <router-link to="/topicCollect">
+          <span style="color: #ff4081;">收藏</span>
+        </router-link>
+      </mu-sub-header>
     </section>
 
     <section class="collect_content">
-      <mu-list>
-        <div class="content_item" v-for="item in data">
-          <mu-list-item :title="item.title">
-            <!--is top-->
-            <mu-icon value="vertical_align_top" slot="right" v-if="item.top"/>
-            <mu-avatar :src="item.author.avatar_url" slot="leftAvatar"/>
-            <span slot="describe">
-            <span>{{item.author.loginname}}</span>
-            <span>#{{item.tab}}#</span>
-            --<span>{{item.create_at}}</span>
-          </span>
-          </mu-list-item>
-          <div class="item_action">
-            <mu-flat-button :label="String(item.visit_count) " class="demo-flat-button" icon="visibility"
-                            iconClass="iactioin_con" labelClass="action_label"/>
-            <mu-flat-button :label="String(item.reply_count)" class="demo-flat-button" icon="comment"
-                            iconClass="iactioin_con" labelClass="action_label"/>
-            <mu-flat-button label="最后回复" class="demo-flat-button" icon="fiber_new" iconClass="iactioin_con"
-                            labelClass="action_label"/>
-          </div>
-        </div>
-      </mu-list>
+      <context :contents="data"></context>
     </section>
 
     <section class="page">
@@ -51,6 +32,7 @@
 <script>
   import loading_v from '../../loading/loading'
   import {loading} from '../../../utils/loading'
+  import context from '../../home/context'
   export default{
     data(){
       return {
@@ -86,6 +68,7 @@
     },
     components: {
       loading_v,
+        context
     }
   }
 </script>
@@ -93,7 +76,6 @@
 <style>
   .breadcrumb{
     width: 100%;
-    padding: 18px 10px 5px 6px;
     font-size: 1.1rem;
   }
   .breadcrumb a{

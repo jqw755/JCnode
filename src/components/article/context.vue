@@ -18,7 +18,8 @@
 <style>
 .article_content{
   width: 100%;
-  padding:5px 1rem;
+  padding:0 1rem;
+  margin-top:2rem;
 
 }
   .article_content img{
