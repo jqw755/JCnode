@@ -4,6 +4,7 @@ import store from '../store/store'
 import * as types from '../store/type'
 import Home from '../components/home/index.vue'
 import Article from '../components/article/index.vue'
+import Message from '../components/message/index.vue'
 import My from '../components/user/index.vue'
 import TopicCollect from '../components/user/topic_collect/index.vue'
 import myTopic from '../components/user/myTopic/index.vue'
@@ -27,7 +28,14 @@ const router = new Router({
         },
         {
             path: '/article',
-            component: Article
+            component: Article,
+        },
+        {
+            path: '/message',
+            meta: {
+                requireAuth: true,
+            },
+            component: Message,
         },
         {
             path: '/classify',
@@ -97,5 +105,13 @@ router.beforeEach((to, from, next) => {
         next();
     }
 });
+
+//离开话题详情页清除位置信息,scrollTop_val
+router.afterEach((to, from, next) => {
+    if(from.path === '/article'){
+        sessionStorage.setItem('scrollTop_val', 0);
+    }
+});
+
 
 export default router;

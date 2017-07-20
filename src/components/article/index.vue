@@ -20,7 +20,7 @@
     <!--评论-->
     <comment :replies_="data.replies"></comment>
     <!--快速回复-->
-    <reply></reply>
+    <reply :for_reply_id=1></reply>
   </div>
 </template>
 
@@ -36,6 +36,7 @@
       return {
         data: {},
         author: {},
+        topic_id:'',
       }
     },
     methods: {
@@ -52,7 +53,7 @@
           self.axios.get(url).then((response) => {
             loading.hide();
             if (response.data.success === true) {
-              console.log(response)
+//              console.log(response)
               self.data = response.data.data;
               self.author = response.data.data.author;
             }
@@ -79,6 +80,10 @@
 </script>
 
 <style>
+  .article_container{
+    margin-bottom: 2rem;
+  }
+
   .article_action {
     padding: 0 1.2rem;
   }

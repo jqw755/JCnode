@@ -4,7 +4,7 @@
       <mu-bottom-nav>
         <mu-bottom-nav-item value="recents" title="JCnode" icon="home" iconClass=home_icon  to="/"/>
         <mu-bottom-nav-item value="favorites" title="分类" icon="dashboard" to="/classify"/>
-        <mu-bottom-nav-item value="favorites" title="消息" icon="message" to="/" class="message_tip"/>
+        <mu-bottom-nav-item value="favorites" title="消息" icon="message" to="/message" class="message_tip"/>
         <div class="tip_icon">
           <span>{{unread | formatUnread}}</span>
         </div>

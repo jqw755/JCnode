@@ -69,6 +69,10 @@
     font-size: 1rem;
   }
 
+  .describeText_class img{
+    max-width: 100%;
+  }
+
   .comment_container .mu-item-right{
     width: 70px;
     right: 0;

@@ -27,7 +27,7 @@
         const ACCESSTOKEN = this.token,
           parten = /^\s*$/;
         if (ACCESSTOKEN !== null) {
-          const is_kong = parten.test(ACCESSTOKEN);
+          let is_kong = parten.test(ACCESSTOKEN);
           if (is_kong) {
             this.login_tip = "shit! 全是空格";
             return;
