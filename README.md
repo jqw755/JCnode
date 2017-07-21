@@ -1,7 +1,7 @@
 # JCnode
 
 > An online forum on node.js
->       --jqw & ct
+>       --jqw
 
 ## Build Setup
 
