@@ -68,7 +68,7 @@
     },
     methods: {
       getUser(){
-        const USERINFO = JSON.parse(localStorage.getItem('user'));
+        const USERINFO = JSON.parse(localStorage.getItem('user')); //
         if (!USERINFO) {
           this.$router.push('/login');
         }else{

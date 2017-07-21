@@ -40,13 +40,14 @@
 //          点赞需要获取对应评论的id,Vue的方法可以直接将对应的ID当做参数传递,很方便
             ups(id) {
                 const self = this,
+                    ARTICLE_ID = this.$route.query.topic_id,
 //                  当前点击元素(返回对象)
                     eTarget = window.event.srcElement || window.event.target,
 //                  当前点击元素的下个兄弟元素(返回对象)
                     eTargetCount = eTarget.parentNode.childNodes[2],
                     ACCESSTOKEN = self.$store.state.token;
                 if (!ACCESSTOKEN) {
-                    const REDIRECT = 'article?topic_id=' + self.topic_id;
+                    const REDIRECT = 'article?topic_id=' + ARTICLE_ID;
                     self.$router.push('/login?redirect=' + REDIRECT);
                     return;
                 }
@@ -58,7 +59,7 @@
                     }
                 }).then((res) => {
                     if (res.data.success === true) {
-                        console.log(res);
+//                        console.log(res);
                         if (res.data.action === 'up') {
 //                          这里用js添加和删除类名实现点赞ICON的颜色切换和数字加减,不符合Vue的精神,有待优化
                             eTarget.className += " " + 'uped';

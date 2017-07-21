@@ -42,7 +42,7 @@
                   id: DATA_.id,
                   avatar_url: DATA_.avatar_url
                 };
-//                this.$store.commit(types.USER, userinfo);
+                this.$store.commit(types.USER, userinfo);
                 this.$store.commit(types.LOGIN, ACCESSTOKEN);
                 let redirect = decodeURIComponent(this.$route.query.redirect || '/');
                 this.$router.push({
